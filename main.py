@@ -6,15 +6,22 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
 
-# for replit
+
 chrome_options = Options()
-# options.add_argument("--no-sandbox")
-# options.add_argument("--disable-dev-shm-usage")
 chrome_options.add_experimental_option("detach", True) # avoid termination 
 
 browser = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options = chrome_options) # create a browser
 
-browser.get("https://www.indeed.com/jobs?q=python&limit=50")
-print(browser.page_source)
+base_url = "https://www.indeed.com/jobs"
+search_term = "python"
 
-browser.get("https://www.naver.com")
+browser.get(f"{base_url}?q={search_term}")
+soup = BeautifulSoup(browser.page_source, "html.parser")
+job_list = soup.find("ul", class_="jobsearch-ResultsList")
+jobs = job_list.find_all("li", recursive=False)
+print(len(jobs))
+
+for job in jobs:
+    print(job)
+    print("-----------")
+    print("-----------")
