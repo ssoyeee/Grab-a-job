@@ -2,13 +2,14 @@ from requests import get
 from bs4 import BeautifulSoup
 
 base_url = "https://weworkremotely.com/remote-jobs/search?&term="
-search_term = "python"
+search_term = "python" # search keyword
 
 response = get(f"{base_url}{search_term}")
 if response.status_code != 200:
     print("can't request website")
 else:
     #print(response.text)
+    results = []
     soup = BeautifulSoup(response.text, "html.parser")
     jobs = soup.find_all('section', class_="jobs")
     for job_section in jobs:
@@ -20,9 +21,15 @@ else:
             link = anchor['href']
             company, jobtype, region = anchor.find_all('span', class_="company")
             title = anchor.find('span', class_="title")
-            print(company, jobtype, region, title)
-            print("/////////////")
-            print("/////////////")
-
+            job_data = {
+                'company': company.string,
+                'jobtype': jobtype.string,
+                'region': region.string,
+                'position': title.string
+            }
+            results.append(job_data)
+    for result in results:
+        print(result)
+        print("----------------")
 
 
