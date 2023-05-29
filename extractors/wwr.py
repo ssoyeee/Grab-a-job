@@ -2,8 +2,7 @@ from requests import get
 from bs4 import BeautifulSoup
 
 def extract_wwr_jobs(keyword):
-
-    base_url = "https://weworkremotely.com/remote-jobs/search?&term="
+    base_url = "https://weworkremotely.com/remote-jobs/search?term="
    # search_term = "python" # search keyword
     response = get(f"{base_url}{keyword}")
     if response.status_code != 200:
@@ -30,7 +29,7 @@ def extract_wwr_jobs(keyword):
                     'position': title.string
                 }
                 results.append(job_data)
-            return results
+        return results
 
 
 
