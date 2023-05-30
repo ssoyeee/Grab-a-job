@@ -1,4 +1,4 @@
 # theverything
-A solid job search site that finds you perfect job opportunities
+A solid job search that finds you perfect job opportunities
 - Beautiful Soup
 - Selenium
