@@ -22,7 +22,7 @@ def get_page_count(keyword):
         return 1 # amount of page that needs scarping
     pages = pagination.find_all('div', recursive=False)
     count = len(pages)
-    if count >=5 :
+    if count >=5:
         return 5
     else:
         return count
