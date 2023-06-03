@@ -1,17 +1,13 @@
-from extractors.indeed import extract_indeed_jobs
-from extractors.wwr import extract_wwr_jobs
-from file import save_to_file
+from flask import Flask, render_template
 
+app = Flask("JobScrapper")
 
-keyword = input("What do you want to search for? ")
-if keyword is None:
-    raise ValueError("The value is incorrect.")
-else:
-    print(f"Keyword: {keyword}")
+# Decorator
+@app.route("/")
+def home():
+    return render_template("home.html", name="soyeon")
 
-indeed = extract_indeed_jobs(keyword) # return list
-wwr = extract_wwr_jobs(keyword) # return list
-
-jobs = indeed+wwr
-
-save_to_file(keyword, jobs)
+@app.route("/search")
+def hello():
+    return render_template("search.html")
+app.run("127.0.0.1")
