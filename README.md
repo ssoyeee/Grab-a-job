@@ -1,4 +1,4 @@
-# theverything
+# Grab a job
 A solid job search that finds you perfect job opportunities
 - Beautiful Soup
 - Selenium
