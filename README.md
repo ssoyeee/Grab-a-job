@@ -4,3 +4,4 @@ A solid job search that finds you perfect job opportunities
 - Selenium
 - Flask
 - Pico.css
+###### Deploy(http://ssoyeee.pythonanywhere.com/)
