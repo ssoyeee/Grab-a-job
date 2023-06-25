@@ -20,7 +20,7 @@ def extract_remoteok_jobs(keyword):
             location_str = ""
             for location in locations:
                 location_str += location.string.strip() + ","
-            location_str = location_str[:-1]  # 줄 끝 쉼표 삭제
+            location_str = location_str[:-1] 
             result = {
                 "site": "remoteok",
                 "link": f"{siteUrl}{job_title['href']}",
